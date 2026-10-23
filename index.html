@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AthifInfo - Pro Dashboard & App Center</title>
+
+    <!-- Google Fonts & FontAwesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="app-layout">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="brand">
+                <i class="fa-solid fa-cube logo-icon"></i>
+                <h2>Athif<span>Info</span></h2>
+            </div>
+
+            <nav class="nav-menu">
+                <button class="nav-btn active" data-tab="home">
+                    <i class="fa-solid fa-house"></i> Home
+                </button>
+
+                <!-- Dashboard Dropdown -->
+                <div class="submenu-container">
+                    <button class="nav-btn submenu-toggle">
+                        <i class="fa-solid fa-chart-line"></i> Dashboard <i class="fa-solid fa-chevron-down arrow"></i>
+                    </button>
+                    <div class="submenu">
+                        <button class="nav-btn sub-btn" data-tab="developer-info">
+                            <i class="fa-solid fa-user-gear"></i> Developer Details
+                        </button>
+                    </div>
+                </div>
+
+                <button class="nav-btn" data-tab="apk">
+                    <i class="fa-brands fa-android"></i> APK Files
+                </button>
+
+                <button class="nav-btn" data-tab="software">
+                    <i class="fa-solid fa-laptop-code"></i> Software Files
+                </button>
+
+                <!-- All Downloads Tab -->
+                <button class="nav-btn" data-tab="all-downloads">
+                    <i class="fa-solid fa-bolt"></i> Direct Downloads
+                </button>
+
+                <!-- Developer Protected Settings Option -->
+                <div class="submenu-container">
+                    <button id="settingsLockBtn" class="nav-btn">
+                        <i class="fa-solid fa-gear"></i> Settings <i class="fa-solid fa-lock lock-icon"></i>
+                    </button>
+                    <!-- Options hidden until Developer Login -->
+                    <div id="settingsSubmenu" class="submenu hidden">
+                        <button class="nav-btn sub-btn" data-tab="upload">
+                            <i class="fa-solid fa-cloud-arrow-up"></i> Add Files (Dev)
+                        </button>
+                        <button class="nav-btn sub-btn" data-tab="settings">
+                            <i class="fa-solid fa-sliders"></i> Security & Account
+                        </button>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <button id="loginBtn" class="btn-login"><i class="fa-solid fa-right-to-bracket"></i> Developer Login</button>
+                <button id="logoutBtn" class="btn-logout hidden"><i class="fa-solid fa-right-from-bracket"></i> Logout Account</button>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+
+            <!-- TAB 1: Home (Website Details) -->
+            <section id="home-tab" class="tab-content active">
+                <div class="hero-banner">
+                    <h1>Welcome to AthifInfo Hub!</h1>
+                    <p>Explore and download official Android Applications (APKs) and PC Softwares easily from AthifInfo.</p>
+                </div>
+
+                <div class="info-grid">
+                    <div class="info-card gradient-1 clickable-card" data-goto="apk">
+                        <i class="fa-brands fa-android"></i>
+                        <h3>Android APKs</h3>
+                        <p>Verified, clean, and secure APK packages on AthifInfo.</p>
+                    </div>
+                    <div class="info-card gradient-2 clickable-card" data-goto="software">
+                        <i class="fa-solid fa-desktop"></i>
+                        <h3>PC Softwares</h3>
+                        <p>Exclusive utilities built for desktop systems.</p>
+                    </div>
+                    <div class="info-card gradient-3 clickable-card" data-goto="all-downloads">
+                        <i class="fa-solid fa-bolt"></i>
+                        <h3>Direct Downloads</h3>
+                        <p>Fast, single-click direct file downloading for all files.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 2: Developer Details -->
+            <section id="developer-info-tab" class="tab-content">
+                <div class="card profile-card">
+                    <div class="avatar"><i class="fa-solid fa-user-ninja"></i></div>
+                    <h2>Mohamed Shareef Mohamed Athif</h2>
+                    <span class="badge">Official AthifInfo Verified Developer</span>
+                    <p class="bio">I build custom Android applications and PC tools for AthifInfo users worldwide.</p>
+                    <div class="details-list" style="margin-top: 15px; text-align: left; line-height: 1.8;">
+                        <p><strong><i class="fa-solid fa-id-card"></i> Dev ID:</strong> Msm.Athif</p>
+                        <p><strong><i class="fa-solid fa-location-dot"></i> Address:</strong> 10/2, Meera Nager Road, Nintavur - 01</p>
+                        <p><strong><i class="fa-solid fa-phone"></i> Phone:</strong> 0765356523</p>
+                        <p><strong><i class="fa-solid fa-shield-halved"></i> Status:</strong> <span class="online" style="color: #3fb950;"><i class="fa-solid fa-circle"></i> Active & Verified</span></p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 3: APK Files -->
+            <section id="apk-tab" class="tab-content">
+                <div class="section-header">
+                    <h2><i class="fa-brands fa-android"></i> AthifInfo APK Library</h2>
+                    <p>Browse and download Android application packages directly.</p>
+                </div>
+                <div id="apkGrid" class="cards-grid">
+                    <div id="noApkMsg" class="empty-msg">No APK files uploaded yet.</div>
+                </div>
+            </section>
+
+            <!-- TAB 4: Software Files -->
+            <section id="software-tab" class="tab-content">
+                <div class="section-header">
+                    <h2><i class="fa-solid fa-laptop-code"></i> AthifInfo PC Software Library</h2>
+                    <p>Browse and download computer software packages directly.</p>
+                </div>
+                <div id="softwareGrid" class="cards-grid">
+                    <div id="noSoftMsg" class="empty-msg">No Software files uploaded yet.</div>
+                </div>
+            </section>
+
+            <!-- TAB 5: All Direct Downloads -->
+            <section id="all-downloads-tab" class="tab-content">
+                <div class="section-header">
+                    <h2><i class="fa-solid fa-bolt"></i> AthifInfo Direct Downloads Hub</h2>
+                    <p>Instant direct downloads for all available APKs and PC Softwares.</p>
+                </div>
+                <div id="allDownloadsGrid" class="cards-grid">
+                    <div id="noAllFilesMsg" class="empty-msg">No files published for direct download yet.</div>
+                </div>
+            </section>
+
+            <!-- TAB 6: Developer Dedicated Upload Section -->
+            <section id="upload-tab" class="tab-content">
+                <div class="section-header">
+                    <h2><i class="fa-solid fa-cloud-arrow-up"></i> Add New APK / Software</h2>
+                    <p>Upload files directly to AthifInfo APK or Software library.</p>
+                </div>
+                <div class="upload-box">
+                    <form id="uploadForm">
+                        <div class="form-group">
+                            <label>Select Category</label>
+                            <select id="fileCategory">
+                                <option value="apk">APK File (Android)</option>
+                                <option value="software">PC Software (Desktop)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Title</label>
+                            <input type="text" id="fileTitle" placeholder="e.g. My Custom App" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Version</label>
+                            <input type="text" id="fileVersion" placeholder="e.g. v1.0" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Select File (.apk / .exe / .zip)</label>
+                            <input type="file" id="uploadFile" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Description</label>
+                            <textarea id="fileDesc" rows="3" placeholder="Enter file details..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn-submit">Publish File Now</button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- TAB 7: Settings Page -->
+            <section id="settings-tab" class="tab-content">
+                <div class="section-header">
+                    <h2><i class="fa-solid fa-sliders"></i> AthifInfo Account Settings</h2>
+                    <p>Manage security configurations and account credentials.</p>
+                </div>
+                <div class="settings-card">
+                    <h3>Change Developer Password</h3>
+                    <div class="form-group">
+                        <label>Current Password</label>
+                        <input type="password" id="currPass" placeholder="Enter current password">
+                    </div>
+                    <div class="form-group">
+                        <label>New Password</label>
+                        <input type="password" id="newPass" placeholder="Enter new password">
+                    </div>
+                    <button class="btn-submit" onclick="updatePassword()">Update Password</button>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- Login Modal Pop-up -->
+    <div id="loginModal" class="modal hidden">
+        <div class="modal-content">
+            <span id="closeModal" class="close">&times;</span>
+            <h2>AthifInfo Developer Login</h2>
+            <p style="font-size: 12px; color: #8b949e; margin-bottom: 10px;">Enter credentials to unlock Settings & Options.</p>
+            <input type="text" id="username" placeholder="Username">
+            <input type="password" id="password" placeholder="Password">
+            <button id="submitLogin" class="btn-submit">Unlock Access</button>
+            <p class="forgot-link" onclick="forgotPassword()"><a href="#">Forgot Password?</a></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
